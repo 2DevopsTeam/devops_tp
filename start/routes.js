@@ -16,4 +16,5 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.get('/', "MessageController.getAll")
+Route.post('/', "MessageController.save")
