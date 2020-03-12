@@ -1,0 +1,38 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+variables:
+  HOST: 127.0.0.1
+  PORT: 3333
+  NODE_ENV: development
+  APP_URL: http://${HOST}:${PORT}
+  CACHE_VIEWS: false
+  APP_KEY: PAI3y3WW8t7iqwaU4HCEUD7JYxYJAnVL
+  DB_CONNECTION: sqlite
+  DB_HOST: 127.0.0.1
+  DB_PORT: 3306
+  DB_USER: root
+  DB_PASSWORD: 
+  DB_DATABASE: adonis
+  SESSION_DRIVER: cookie
+  HASH_DRIVER: bcrypt
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm install @adonisjs/cli
+    npm run build
+    npm start
+  displayName: 'npm install and build and start'
