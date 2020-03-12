@@ -17,7 +17,7 @@ steps:
 
 - script: |
     npm install
-    npm i -g @adonisjs/cli
+    npm install @adonisjs/cli
     npm run build
     npm start
   displayName: 'npm install and build and start'
