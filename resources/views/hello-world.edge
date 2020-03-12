@@ -1,0 +1,9 @@
+<h1>Send request</h1>
+<div>
+    <form action="{{ route('hello') }}" method="POST">
+        <label for="message">Message </label>
+        <input id="message" name="message" type="text" placeholder="here put your message, for KABA API"/>
+        <input type="submit" />
+    </form>
+    <p>{{ content_sended }}</p>
+</div>
