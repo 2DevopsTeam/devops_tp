@@ -18,4 +18,4 @@ const Route = use('Route')
 
 Route.get('/messages', "MessageController.all")
 Route.post('/messages', "MessageController.save")
-Route.get('/','')
+Route.get('/','MessageController.all')
