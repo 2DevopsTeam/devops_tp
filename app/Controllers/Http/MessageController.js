@@ -1,6 +1,9 @@
 'use strict'
 const Message = use('App/Models/Message')
 const fetch = require('node-fetch');
+const FormData = require('form-data');
+/*const https = require('https');
+const querystring = require('querystring');*/
 
 class MessageController {
     async save ({ request, response }) {
@@ -28,7 +31,7 @@ class MessageController {
         return response.status(200).json(Message.all());
     }
 
-    async kabaApi({ request, response }){
+    async kabaApi({ view, request, response }){
         const payload = request.only(['message']);
         var form = new FormData();
         form.append('content', payload.message);
@@ -41,6 +44,47 @@ class MessageController {
             returndata = await res.text()
         })
         .catch(err => console.error(err));
+
+        /*let req = await https.post('https://devops.kabaconde.com/messages', {body: form}, (res) => {
+            returndata = res.body.text();
+            console.log('statusCode:', res.statusCode, 'ip:', res.connection.remoteAddress);
+        });
+        
+        req.on('error', (e) => {
+            console.error(e);
+        });*/
+        
+        /*var postData = querystring.stringify({
+            'content' : payload.message
+        });
+
+        var options = {
+            hostname: 'devops.kabaconde.com',
+            port: 443,
+            path: '/messages',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
+
+        var req = https.request(options, (res) => {
+            console.log('statusCode:', res.statusCode);
+            console.log('headers:', res.headers);
+
+            res.on('data', (d) => {
+                returndata = d;
+            });
+        });
+
+        req.on('error', (e) => {
+            console.error(e);
+        });
+
+        req.write(postData);
+        req.end();
+*/
+
         return view.render('hello-world', {content_sended: returndata});
 //        return response.status(200).json(Message.all());
     }
