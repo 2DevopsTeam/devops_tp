@@ -27,6 +27,23 @@ class MessageController {
     async all({ request, response }) {
         return response.status(200).json(Message.all());
     }
+
+    async kabaApi({ request, response }){
+        const payload = request.only(['message']);
+        var form = new FormData();
+        form.append('content', payload.message);
+
+        var returndata = "";
+
+        await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: form })
+        .then(async res => {
+            //console.log(await res.text())
+            returndata = await res.text()
+        })
+        .catch(err => console.error(err));
+        return view.render('hello-world', {content_sended: returndata});
+//        return response.status(200).json(Message.all());
+    }
 }
 
 module.exports = MessageController
