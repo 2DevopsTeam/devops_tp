@@ -10,7 +10,7 @@ class MessageController {
         const payload = request.only(['message']);
         
         const params = {
-            message: payload.message
+            name: payload.message
         }
         
         const msg = new Message()
