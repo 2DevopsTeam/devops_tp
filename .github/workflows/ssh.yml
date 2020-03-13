@@ -15,5 +15,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cd /var/www/devops_courses/devops_tp \
-                 && git pull
+        script: cd /var/www/devops_courses/devops_tp && git pull
