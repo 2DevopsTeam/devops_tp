@@ -48,8 +48,8 @@ jobs:
             docker-compose exec -T server adonis install @adonisjs/vow
             # docker-compose exec -T server adonis test functional
           fi
-  build:
-    needs: [test]
+
+  deploy:
 
     runs-on: ubuntu-latest
 
