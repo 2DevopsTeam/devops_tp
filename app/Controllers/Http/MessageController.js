@@ -21,9 +21,7 @@ class MessageController {
         })
         .catch(err => console.error(err));
 
-        return response.status(200).json({
-            msg: msg.message
-        });
+        return response.status(200).json(msg.message);
     }
 
     async all({ request, response }) {
