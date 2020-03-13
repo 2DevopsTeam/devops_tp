@@ -1,0 +1,32 @@
+version: '3.0'
+services:
+
+  server:
+    container_name:  "${APP_NAME}-nodejs"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh ./docker-start.sh
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - .:/home/app:cached
+    ports:
+      - "4444:4444"
+    networks:
+      - default
+    expose:
+      - "4444"
+
+  postgresql:
+    image: 'postgres:10.4'
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+    environment:
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=devops
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password

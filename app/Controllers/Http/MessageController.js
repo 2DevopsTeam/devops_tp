@@ -28,7 +28,7 @@ class MessageController {
     }
 
     async all({ request, response }) {
-        return response.status(200).json(Message.all());
+        return response.status(200).json(await Message.all());
     }
 
     async kabaApi({ view, request, response }){
