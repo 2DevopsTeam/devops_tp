@@ -1,6 +1,7 @@
 language: shell
 sudo: false
 before_install:
+  - apt-get install nodejs
   - npm install -g npm@latest
   - npm install -g @adonisjs/cli
   # - npm install 
