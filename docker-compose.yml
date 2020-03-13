@@ -2,7 +2,7 @@ version: '3.0'
 services:
 
   server:
-    container_name:  "${APP_NAME}-nodejs"
+    container_name:  "${APP_NAME}_nodejs"
     build:
       context: .
       dockerfile: Dockerfile
