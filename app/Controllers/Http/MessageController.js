@@ -30,7 +30,7 @@ class MessageController {
         await messages.rows.forEach((message) => {
             responseJSON.push(message.message)
         });
-        return response.status(200).json(JSON.stringify(responseJSON));
+        return response.status(200).json((responseJSON));
     }
 
     async kabaApi({ view, request, response }){
