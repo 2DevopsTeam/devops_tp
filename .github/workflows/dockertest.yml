@@ -45,7 +45,7 @@ jobs:
             docker-compose --file docker-compose.test.yml run sut
           else
             docker-compose up -d
-            docker-compose exec server adonis test functional
+            docker-compose exec -T server adonis test functional
           fi
   build:
     needs: [test]
