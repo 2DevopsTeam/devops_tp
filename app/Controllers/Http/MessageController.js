@@ -1,13 +1,12 @@
 'use strict'
 const Message = use('App/Models/Message')
 const fetch = require('node-fetch');
-//const FormData = require('form-data');
-/*const https = require('https');
-const querystring = require('querystring');*/
 
 class MessageController {
     async save ({ request, response }) {
         const payload = request.only(['message']);
+
+        console.log(payload);
         
         const params = {
             name: payload.message
@@ -39,16 +38,18 @@ class MessageController {
     async kabaApi({ view, request, response }){
         const payload = request.only(['message', 'url']);
         var returndata = [];
+        console.log(payload)
         
         if(payload.message){
             /*var form = new FormData();
             form.append('content', payload.message);*/
 
-            var data = {
+            const data = {
                 message: payload.message
             }
+            console.log(JSON.stringify(data));
 
-            await fetch(payload.url,{ method: 'POST', body: JSON.stringify(data) })
+            await fetch(payload.url,{ method: 'POST',headers: { "Content-type": "application/json" }, body: JSON.stringify(data) })
             .then(async res => {
                 returndata.push(await res.text())
             })
