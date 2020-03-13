@@ -16,6 +16,18 @@ on:
 env:
   # TODO: Change variable to your image's name.
   IMAGE_NAME: image
+  APP_NAME: Devops
+  DB_CONNECTION: pg
+  DB_HOST: postgresql
+  DB_PORT: 5433
+  DB_USER: user
+  DB_PASSWORD: password
+  DB_DATABASE: devops
+  HOST: 0.0.0.0
+  PORT: 4444
+  NODE_ENV: development
+  APP_URL: http://${HOST}:${PORT}
+
 
 jobs:
   # Run tests.
