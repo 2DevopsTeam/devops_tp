@@ -18,8 +18,5 @@ const Route = use('Route')
 
 Route.get('/messages', "MessageController.all")
 Route.post('/messages', "MessageController.save")
-Route.post('/kabaApi', "MessageController.kabaApi").as("kaba")
-Route.get('/', ({ view }) => {
-    return view.render('hello-world', {content_sended: ""})
-  }).as('hello')
-  
+Route.post('/', "MessageController.kabaApi").as("kaba")
+Route.get('/', "MessageController.kabaApi").as("kaba")

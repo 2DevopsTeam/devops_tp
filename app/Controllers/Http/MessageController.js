@@ -33,19 +33,26 @@ class MessageController {
 
     async kabaApi({ view, request, response }){
         const payload = request.only(['message']);
-        var form = new FormData();
-        form.append('content', payload.message);
-
         var returndata = "";
+        
+        if(payload.message){
+            var form = new FormData();
+            form.append('content', payload.message);
 
-        await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: form })
-        .then(async res => {
-            returndata = await res.text()
-        })
-        .catch(err => console.error(err));
+            await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: form })
+            .then(async res => {
+                returndata = await res.text()
+            })
+            .catch(err => console.error(err));
+        } else {
+            await fetch('https://devops.kabaconde.com/messages',{ method: 'GET' })
+            .then(async res => {
+                returndata = await res.text()
+            })
+            .catch(err => console.error(err));
+        }
 
         return view.render('hello-world', {content_sended: returndata});
-        //ceci est un test
     }
 }
 
