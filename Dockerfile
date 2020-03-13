@@ -10,4 +10,6 @@ USER root
 WORKDIR $HOME
 
 RUN npm i -g @adonisjs/cli
+RUN npm i --save @adonisjs/cors
+RUN npm i --save @adonisjs/vow
 RUN npm install
