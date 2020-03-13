@@ -3,12 +3,11 @@ node_js:
   - node
   - lts/*
 sudo: false
-before_script:
-  - cp .env.example .env
 before_install:
   - npm install -g npm@latest
   - npm install -g @adonisjs/cli
   - npm install 
+  - cp .env.example .env
 cache:
   npm: false
 install:
