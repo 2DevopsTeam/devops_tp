@@ -6,16 +6,10 @@ sudo: false
 before_install:
   - npm install -g npm@latest
   - npm install -g @adonisjs/cli
-  - npm install 
-  - cp .env.example .env 
+  # - npm install 
+  # - cp .env.example .env 
 cache:
   npm: false
 install:
-  - adonis serve --dev
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN   # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: master
+  # - adonis serve --dev
+  - npm install 
