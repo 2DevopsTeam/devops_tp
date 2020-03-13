@@ -7,6 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: sh ./docker-start.sh
+    depends_on:
+      - postgresql
     environment:
       - NODE_ENV=dev
     volumes:
