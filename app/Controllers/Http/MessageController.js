@@ -1,7 +1,7 @@
 'use strict'
 const Message = use('App/Models/Message')
 const fetch = require('node-fetch');
-const FormData = require('form-data');
+//const FormData = require('form-data');
 /*const https = require('https');
 const querystring = require('querystring');*/
 
@@ -10,7 +10,7 @@ class MessageController {
         const payload = request.only(['message']);
         
         const params = {
-            name: payload.message
+            message: payload.message
         }
         
         const msg = new Message()
@@ -36,10 +36,14 @@ class MessageController {
         var returndata = "";
         
         if(payload.message){
-            var form = new FormData();
-            form.append('content', payload.message);
+            /*var form = new FormData();
+            form.append('content', payload.message);*/
 
-            await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: form })
+            var data = {
+                message: payload.message
+            }
+
+            await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: JSON.stringify(data) })
             .then(async res => {
                 returndata = await res.text()
             })
