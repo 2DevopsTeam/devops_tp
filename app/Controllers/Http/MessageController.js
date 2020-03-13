@@ -28,12 +28,17 @@ class MessageController {
     }
 
     async all({ request, response }) {
-        return response.status(200).json(await Message.all());
+        var messages = await Message.all();
+        var responseJSON = []
+        await messages.rows.forEach((message) => {
+            responseJSON.push(message.message)
+        });
+        return response.status(200).json(JSON.stringify(responseJSON));
     }
 
     async kabaApi({ view, request, response }){
         const payload = request.only(['message', 'url']);
-        var returndata = "";
+        var returndata = [];
         
         if(payload.message){
             /*var form = new FormData();
@@ -45,11 +50,16 @@ class MessageController {
 
             await fetch(payload.url,{ method: 'POST', body: JSON.stringify(data) })
             .then(async res => {
-                returndata = await res.text()
+                returndata.push(await res.text())
             })
             .catch(err => console.error(err));
         } else {
-            returndata = JSON.stringify(await Message.all())
+            var messages = await Message.all();
+            var responseJSON = []
+            await messages.rows.forEach((message) => {
+                responseJSON.push(message.message)
+            });
+            returndata = responseJSON
         }
 
         return view.render('hello-world', {content_sended: returndata});

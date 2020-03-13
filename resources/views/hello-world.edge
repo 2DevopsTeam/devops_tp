@@ -7,5 +7,9 @@
         <input id="url" name="url" type="text" value="https://devops.kabaconde.com/messages" placeholder="https://devops.kabaconde.com/messages"/>
         <input type="submit" />
     </form>
-    <p>{{ content_sended }}</p>
+    <ul>
+        @each(comment in content_sended)
+            <li>{{ comment }}</li>
+        @endeach    
+    </ul>
 </div>
