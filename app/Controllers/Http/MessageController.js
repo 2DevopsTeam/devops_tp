@@ -45,6 +45,7 @@ class MessageController {
         .catch(err => console.error(err));
 
         return view.render('hello-world', {content_sended: returndata});
+        
     }
 }
 
