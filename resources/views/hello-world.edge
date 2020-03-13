@@ -3,6 +3,8 @@
     <form action="{{ route('kaba') }}" method="POST">
         <label for="message">Message </label>
         <input id="message" name="message" type="text" placeholder="here put your message, for KABA API"/>
+        <label for="url">URL to call </label>
+        <input id="url" name="url" type="text" value="https://devops.kabaconde.com/messages" placeholder="https://devops.kabaconde.com/messages"/>
         <input type="submit" />
     </form>
     <p>{{ content_sended }}</p>

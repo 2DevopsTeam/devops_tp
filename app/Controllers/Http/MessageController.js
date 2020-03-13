@@ -32,7 +32,7 @@ class MessageController {
     }
 
     async kabaApi({ view, request, response }){
-        const payload = request.only(['message']);
+        const payload = request.only(['message', 'url']);
         var returndata = "";
         
         if(payload.message){
@@ -43,7 +43,7 @@ class MessageController {
                 message: payload.message
             }
 
-            await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: JSON.stringify(data) })
+            await fetch(payload.url,{ method: 'POST', body: JSON.stringify(data) })
             .then(async res => {
                 returndata = await res.text()
             })
