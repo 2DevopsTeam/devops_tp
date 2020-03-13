@@ -1,8 +1,9 @@
-name: Deploy 
+name: Node CI
+
+on: [push]
 
 jobs:
   build:
-    needs: [test]
 
     runs-on: ubuntu-latest
 
