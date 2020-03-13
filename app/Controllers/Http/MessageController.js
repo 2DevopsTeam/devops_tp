@@ -53,7 +53,6 @@ class MessageController {
         }
 
         return view.render('hello-world', {content_sended: returndata});
-
     }
 }
 
