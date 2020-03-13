@@ -40,53 +40,11 @@ class MessageController {
 
         await fetch('https://devops.kabaconde.com/messages',{ method: 'POST', body: form })
         .then(async res => {
-            //console.log(await res.text())
             returndata = await res.text()
         })
         .catch(err => console.error(err));
 
-        /*let req = await https.post('https://devops.kabaconde.com/messages', {body: form}, (res) => {
-            returndata = res.body.text();
-            console.log('statusCode:', res.statusCode, 'ip:', res.connection.remoteAddress);
-        });
-        
-        req.on('error', (e) => {
-            console.error(e);
-        });*/
-        
-        /*var postData = querystring.stringify({
-            'content' : payload.message
-        });
-
-        var options = {
-            hostname: 'devops.kabaconde.com',
-            port: 443,
-            path: '/messages',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        };
-
-        var req = https.request(options, (res) => {
-            console.log('statusCode:', res.statusCode);
-            console.log('headers:', res.headers);
-
-            res.on('data', (d) => {
-                returndata = d;
-            });
-        });
-
-        req.on('error', (e) => {
-            console.error(e);
-        });
-
-        req.write(postData);
-        req.end();
-*/
-
         return view.render('hello-world', {content_sended: returndata});
-//        return response.status(200).json(Message.all());
     }
 }
 
