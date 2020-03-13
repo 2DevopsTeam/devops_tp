@@ -23,8 +23,6 @@ env:
   DB_USER: user
   DB_PASSWORD: password
   DB_DATABASE: devops
-  HOST: 0.0.0.0
-  PORT: 4444
   NODE_ENV: development
   APP_URL: http://${HOST}:${PORT}
 
@@ -50,6 +48,7 @@ jobs:
           fi
 
   deploy:
+    needs: [test]
 
     runs-on: ubuntu-latest
 
