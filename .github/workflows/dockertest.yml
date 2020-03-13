@@ -23,8 +23,6 @@ env:
   DB_USER: user
   DB_PASSWORD: password
   DB_DATABASE: devops
-  HOST: 0.0.0.0
-  PORT: 4444
   NODE_ENV: development
   APP_URL: http://${HOST}:${PORT}
 
@@ -48,7 +46,8 @@ jobs:
             docker-compose exec -T server adonis install @adonisjs/vow
             # docker-compose exec -T server adonis test functional
           fi
-  build:
+
+  deploy:
     needs: [test]
 
     runs-on: ubuntu-latest
