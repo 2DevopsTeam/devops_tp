@@ -49,11 +49,7 @@ class MessageController {
             })
             .catch(err => console.error(err));
         } else {
-            await fetch('https://devops.kabaconde.com/messages',{ method: 'GET' })
-            .then(async res => {
-                returndata = await res.text()
-            })
-            .catch(err => console.error(err));
+            returndata = JSON.stringify(await Message.all())
         }
 
         return view.render('hello-world', {content_sended: returndata});
